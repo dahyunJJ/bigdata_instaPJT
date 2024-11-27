@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MainDAO">
+
+	<select id="selectIdChk" parameterType="java.util.HashMap" resultType="int">
+		SELECT count(1)
+		FROM   tb_member
+		WHERE member_id = #{accountId}
+	</select>
+	
+	<insert id="insertMember" parameterType="java.util.HashMap">
+		INSERT INTO tb_users
+		(
+			user_id,
+			user_pw,
+			user_name,
+			user_email,
+			create_id,
+			update_id
+		) VALUES (
+			#{userId},
+			#{userPw},
+			#{userName},
+			#{userEmail},
+			#{userId},
+			#{userId}
+		)
+	</insert>
+	
+	<select id="selectLoginInfo" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT user_idx AS userIdx,
+			   user_id AS userId,
+			   user_name AS name,
+			   user_phone AS phone,
+			   user_email AS email,
+			   use_yn AS useYn
+		FROM tb_users
+		WHERE user_id = #{userId}
+		AND user_pw = #{userPw}
+		AND use_yn = 'Y'
+	</select>
+	
+	<update id="updateMember" parameterType="java.util.HashMap">		
+		UPDATE tb_users
+		<set>						
+				member_name = #{accountName},			
+				member_birth = #{accountBirth},			
+				member_email = #{accountEmail},
+				update_id = #{accountId},
+				update_date = CURRENT_TIMESTAMP()
+				<if test="accountPwd != '' and accountPwd != null and accountPwd != 'undefined'">
+				,member_pw = #{accountPwd}
+				</if>			
+		</set>
+		WHERE member_idx = #{memberIdx}
+	</update>
+	
+	<select id="selectMemberInfo" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT user_idx AS userIdx,
+			   user_id AS userId,
+			   user_name AS name,
+			   user_phone AS phone,
+			   user_email AS email,
+			   use_yn AS useYn
+		FROM tb_users
+		WHERE user_idx = #{userIdx}
+	</select>
+	
+	<update id="deleteMemberInfo" parameterType="int">
+		UPDATE tb_users
+		SET use_yn = 'N'
+		WHERE user_idx = #{userIdx}
+	</update>
+	
+	<select id="selectFindId" parameterType="java.util.HashMap" resultType="String">
+		SELECT user_id
+		FROM tb_users
+		WHERE user_name = #{userName}
+		AND user_email = #{email}
+		AND use_yn = 'Y'
+	</select>
+	
+	<select id="selectMemberCertification" parameterType="java.util.HashMap" resultType="int">
+		SELECT member_idx
+		FROM tb_member
+		WHERE member_id = #{memberId}
+		AND member_name = #{memberName}
+		AND member_email = #{memberEmail}	
+	</select>
+	
+	<select id="selectMemberCertificationChk" parameterType="java.util.HashMap" resultType="int">
+		SELECT count(member_idx)
+		FROM tb_member
+		WHERE member_id = #{memberId}
+		AND member_name = #{memberName}
+		AND member_email = #{memberEmail}	
+	</select>
+	
+	<update id="updatePwd" parameterType="java.util.HashMap">
+		UPDATE tb_member
+		SET member_pw = #{memberPw}
+		WHERE member_idx = #{memberIdx}
+	</update>
+
+</mapper>

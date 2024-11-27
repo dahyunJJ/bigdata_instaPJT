@@ -1,0 +1,300 @@
+@charset "UTF-8";
+
+:root {
+  --body-bg: #fafafa;
+  --box-bg: #fff;
+  --box-border-color: #dbdbdb;
+  --txt-color: #262626;
+  --txt-second-color: #8e8e8e;
+  --light-blue: #0095f6;
+  --dark-blue: #00376b;
+  --fb-color: #385185;
+}
+
+.dark {
+  --body-bg: #151515;
+  --box-bg: #353535;
+  --box-border-color: #666565;
+  --txt-color: #d2d2d2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--body-bg);
+  color: var(--txt-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+i {
+  cursor: pointer;
+}
+
+.btn-blue {
+  width: 100%;
+  padding: 10px 0;
+  color: #fff;
+  background-color: var(--light-blue);
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn_blue_l {
+  color: #fff;
+  background-color: var(--light-blue);
+  border: var(--light-blue);
+  border-radius: 6px;
+  font-size: 12px;
+  padding: 8px;
+}
+
+/* header */
+.global-header {
+  width: 100%;
+  background-color: var(--body-bg);
+  border-bottom: 1px solid var(--box-border-color);
+  padding: 20px;
+}
+
+.global-header > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 100px;
+  height: 40px;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.search-txt {
+  border:1px solid #dbdbdb; 
+  border-radius: 8px; 
+  padding: 6px;
+  font-size: 14px;
+}
+
+.gnb-icon-list {
+  display: flex;
+}
+
+.gnb-icon-list li {
+  padding: 0 6px;
+  color: var(--txt-color);
+  transition: opacity 300ms ease-in-out;
+  font-size: 22px;
+}
+
+.gnb-icon-list li:hover {
+  opacity: 0.7;
+}
+
+/*메뉴바 우측 상단 미니프로필*/
+.mini-profile {
+    width: 24px;
+    height: 24px;
+    border-radius: 70%;
+    overflow: hidden;
+}
+
+/*피드박스 좌측 상단 미니프로필*/
+.main-profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 70%;
+    overflow: hidden;
+}
+
+/* 피드 리스트 */
+.feed-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding-left: 0;
+	margin-top: 50px; 
+}
+
+.feed-list li {
+	cursor: pointer;
+	width: calc(100% / 3 - 10px);
+}
+
+.feed-list li img {
+	width: 100%;
+	height: 300px;
+}
+
+/*프로필사진들*/
+.profile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.4);
+    animation: showText1 0.5s;
+}
+
+.modal-overlay.active {
+	display: flex;
+}
+
+.modal_body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1200px;
+    height: 900px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    line-height: 50px;
+}
+
+.modal-text {
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 1px solid #dbdbdb;
+    background-color: white;
+}
+
+/* .modal-image {
+    height: 900px;
+    width: 750px;
+    object-fit: cover;
+} */
+
+/*슬라이드 이미지*/
+.carousel {
+	flex-grow: 1;
+}
+
+.carousel-item {
+    width: 100%;
+    height: 900px;
+}
+
+.d-block {
+    display: block;
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.detail-img {
+	display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.profilepage-image {
+    width: 290px;
+    height: 290px;
+    object-fit: cover;
+    margin: 20px 0;
+
+}
+
+/* 디테일 팝업 댓글 영역 */
+.comment-list {
+  margin-top: 12px;
+  flex-grow: 1;
+}
+
+.comment-detail .username {
+  margin: 0 8px;
+}
+
+.form-control {
+	 box-shadow: none; 
+	 border: none; 
+	 border-radius: 0px; 
+	 padding: 10px 0 !important;
+	 width: 420px;
+}
+
+.upload_btn {
+	width: 80px;
+	padding:0;
+}
+
+.close-area {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+    background-color: rgba(0, 0, 0, 0.01);
+    border: none;
+    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+    font-size: 24px;
+    color: #fafafa;
+}
+
+/*피드박스 좌측 상단 미니프로필*/
+.box-profile {
+    width: 33px;
+    height: 33px;
+    border-radius: 70%;
+    overflow: hidden;
+    object-fit: cover;
+    /* margin-left: 12px; */
+}
+
+@keyframes showText1 {
+    from {
+        transform: translateX(0px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
